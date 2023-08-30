@@ -12,10 +12,7 @@ def empty_el_position(board: list):
 
 def get_column(board: list, y: int):
     size = len(board)
-    temp = []
-    for x in range(size):
-        temp.append(board[x][y])
-    return temp
+    return [board[x][y] for x in range(size)]
 
 
 def valid_element_in_position(board: list, el: int, x: int, y: int):
@@ -46,22 +43,17 @@ def fill(board: list):
 
 def board_print(board: list):
     print("\033[H\033[J", end='')
-    i = 1
     j = 1
-    for line in board:
-        j = 1
-        for item in line:
+    for i, line in enumerate(board, start=1):
+        for j, item in enumerate(line, start=1):
             if j % 3 == 0:
                 print(f"{item}   ", end='')
             else:
                 print(f"{item} ", end='')
-            j += 1
-
         if i % 3 == 0:
             print("\n")
         else:
             print()
-        i += 1
 
 
 board = [[1, 0, 0, 0, 0, 0, 0, 0, 0],
